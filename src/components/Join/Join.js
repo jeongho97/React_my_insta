@@ -35,7 +35,7 @@ const Join = () => {
     } else {
       /* Users.push({ ...user, userId: user.id, id: user.length }); */
       insertUsers(user);
-      localStorage.setItem("id", user.length);
+      localStorage.setItem("id", users.length);
       navigate("/");
     }
   };
@@ -51,6 +51,7 @@ const Join = () => {
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
+    console.log(user, value);
   };
   return (
     <div className="JoinPage">
