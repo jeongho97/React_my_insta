@@ -1,0 +1,11 @@
+.profileBoard{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.profileBoardImgBox{
+    cursor: pointer;
+}
+.profileBoardImg{
+    width:100%;
+    height: 100%;
+}

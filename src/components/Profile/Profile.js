@@ -6,6 +6,7 @@ import ProfileHeader from "./ProfileHeader";
 import "./Profile.css";
 import { PostContext } from "../../store/PostContext";
 import { FollowContext } from "../../store/FollowContext";
+import ProfileBoard from "./ProfileBoard";
 
 const Profile = () => {
   const { users } = useContext(UserContext);
@@ -17,13 +18,13 @@ const Profile = () => {
   const { posts } = useContext(PostContext);
   const { follows } = useContext(FollowContext);
   const myPosts = () => {
-    return posts.filter((post) => post.userId == id);
+    return posts.filter((post) => post.userId === id);
   };
   const myFollower = () => {
-    return follows.filter((follow) => follow.following == id);
+    return follows.filter((follow) => follow.following === id);
   };
   const myFollowing = () => {
-    return follows.filter((follow) => follow.follower == id);
+    return follows.filter((follow) => follow.follower === id);
   };
   return (
     <>
@@ -35,6 +36,7 @@ const Profile = () => {
           following={myFollowing()}
           posts={myPosts()}
         ></ProfileBody>
+        <ProfileBoard posts={myPosts()}></ProfileBoard>
       </Container>
     </>
   );

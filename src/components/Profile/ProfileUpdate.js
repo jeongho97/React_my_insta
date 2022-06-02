@@ -4,7 +4,7 @@ import { UserContext } from "../../store/UserContext";
 import ProfileHeader from "./ProfileHeader";
 import "./ProfileUpdate.css";
 const ProfileUpdate = ({
-  img = "/img/post/1.jpg",
+  img = "/img/profile/1.jpg",
   name = "park",
   isOpen,
   modalClose,
@@ -42,6 +42,7 @@ const ProfileUpdate = ({
       <ProfileUpdateBody
         onChangeName={onChangeName}
         onChangeFile={onChangeFile}
+        form={form}
       ></ProfileUpdateBody>
     </Modal>
   );

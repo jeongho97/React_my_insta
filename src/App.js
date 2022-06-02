@@ -23,7 +23,7 @@ function App() {
   const updateUsers = (user) => {
     const id = Number(localStorage.getItem("id"));
     const { img, name } = user;
-    const findUsersIndex = users.findIndex((user) => user.id == id);
+    const findUsersIndex = users.findIndex((user) => user.id === id);
     if (findUsersIndex === -1) {
       console.error("not found");
       return;
@@ -50,7 +50,7 @@ function App() {
     setFollows([...follows, newFollow]);
   };
   return (
-    <UserContext.Provider value={{ users, insertUsers }}>
+    <UserContext.Provider value={{ users, insertUsers, updateUsers }}>
       <PostContext.Provider value={{ posts, insertPost }}>
         <FollowContext.Provider value={{ follows, insertFollow }}>
           <BrowserRouter>
