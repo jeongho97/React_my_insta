@@ -2,14 +2,16 @@ import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Follow } from "./components/data/Follow";
 import { Post } from "./components/data/Post";
+import { Users } from "./components/data/User";
 import Join from "./components/Join/Join";
 import Layout from "./components/Layout/Layout";
 import BootstrapLogin from "./components/Login/BootstrapLogin";
 import Login from "./components/Login/Login";
-import { Users } from "./components/Login/User";
+
 import Main from "./components/Main";
 import Page404 from "./components/Page404";
 import Profile from "./components/Profile/Profile";
+import Search from "./components/Search/Search";
 import { FollowContext } from "./store/FollowContext";
 import { PostContext } from "./store/PostContext";
 import { UserContext } from "./store/UserContext";
@@ -41,6 +43,10 @@ function App() {
     };
     setPosts([...posts, newPost]);
   };
+  const deletePost = (postId) => {
+    const delPosts = posts.filter((post) => post.id !== postId);
+    setPosts(delPosts);
+  };
   const [follows, setFollows] = useState(Follow);
   const insertFollow = (followerId) => {
     const newFollow = {
@@ -51,7 +57,7 @@ function App() {
   };
   return (
     <UserContext.Provider value={{ users, insertUsers, updateUsers }}>
-      <PostContext.Provider value={{ posts, insertPost }}>
+      <PostContext.Provider value={{ posts, insertPost, deletePost }}>
         <FollowContext.Provider value={{ follows, insertFollow }}>
           <BrowserRouter>
             <Routes>
@@ -59,6 +65,7 @@ function App() {
                 <Route index element={<Main></Main>}></Route>
                 <Route path="shopping" element={<Main></Main>}></Route>
                 <Route path="profile" element={<Profile></Profile>}></Route>
+                <Route path="search" element={<Search></Search>}></Route>
               </Route>
               <Route
                 path="/login"
